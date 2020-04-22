@@ -19,6 +19,8 @@ function rodder -a job pack -d "Yet Another Fish package manager"
                         rm ~/.config/fish/packs/$pack.txt
                         echo "Done!"
                         fish
+                case update -US
+                        rodderInternalUpdate
         end
 end
 function rodderSetup -d "Setup required directories
