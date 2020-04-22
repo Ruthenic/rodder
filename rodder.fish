@@ -40,7 +40,7 @@ endfunction rodderInternalInstall -a pack -d "Install rodder functions (for inte
         cd ~
         echo $pack >> ~/.config/fish/packs-installed-ever.txt
         echo $pack":"|read temp1
-        echo (find ~/.tmp/rodder/src/functions -maxdepth 1 -type f -name "*.fish" -printf "%f>
+        echo (find ~/.tmp/rodder/src/functions -maxdepth 1 -type f -name "*.fish" -printf "%f\n")|read temp3
         echo "end pack"|read temp4
         set pack (echo $pack| tr "/" -)
         touch ~/.config/fish/packs/$pack.txt
