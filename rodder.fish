@@ -52,7 +52,6 @@ endfunction rodderInternalInstall -a pack -d "Install rodder functions (for inte
 end
 
 function rodderInternalUpdate -d "Update rodder"
-        function rodderInternalInstall -a pack -d "Install rodder functions (for internal use>
         cd ~/.tmp/rodder
         git clone https://github.com/Ruthenic/rodder src
         cd src
