@@ -31,7 +31,8 @@ function rodderSetup -d "Setup required directories
         if not test -d ~/.tmp/rodder
                 mkdir ~/.tmp/rodder
         end
-endfunction rodderInternalInstall -a pack -d "Install rodder functions (for internal use)"
+end
+function rodderInternalInstall -a pack -d "Install rodder functions (for internal use)"
         cd ~/.tmp/rodder
         git clone $pack src
         cd src
