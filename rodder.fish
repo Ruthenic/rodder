@@ -61,5 +61,5 @@ function rodderInternalUpdate -d "Update rodder"
         cp *.fish ~/.config/fish/functions
         cd ~
         rm -rf ~/.tmp/rodder/src
-        echo "Done!"
+        echo "Done updating!"
 end
