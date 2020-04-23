@@ -23,7 +23,7 @@ function rodder -a job pack -d "Yet Another Fish package manager"
                         rodderInternalUpdate
         end
 end
-function rodderSetup -d "Setup required directories
+function rodderSetup -d "Setup required directories"
         if not test -d ~/.config/fish/packs
                 mkdir ~/.config/fish/packs
         end
