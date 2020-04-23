@@ -1,5 +1,5 @@
 function rodder -a job pack -d "Yet Another Fish package manager"
-        rodder-setup
+        rodderSetup
         switch $job
                 case -S install
                         rodderInternalInstall $pack
