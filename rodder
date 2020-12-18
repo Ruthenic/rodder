@@ -4,7 +4,7 @@ if sys.argv[1] == "help" or sys.argv[1] == "":
     print("rodder is a package management system\n\nrodder install - installs program from current repos\nrodder update - pulls newest version of repo file\nrodder remove - uninstall program")
     exit()
 elif sys.argv[1] == "update":
-    with open(os.getenv('HOME') + '/.config/rodder/repos/master.txt') as f:
+    with open(os.getenv('HOME') + '/.config/rodder/repos/master-repo-list.txt') as f:
         for line in f:
             print(">< Updating " + line.rsplit('/', 1)[-1] + '...')
             print(subprocess.check_output('git clone ' + line + ' ' + os.getenv('HOME') + '/.config/rodder/repos/'))
