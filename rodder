@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import sys,subprocess
+import sys,subprocess,os
 if sys.argv[1] == "help" or sys.argv[1] == "":
     print("rodder is a package management system\n\nrodder install - installs program from current repos\nrodder update - pulls newest version of repo file\nrodder remove - uninstall program")
     exit()
