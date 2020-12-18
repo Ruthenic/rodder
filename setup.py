@@ -1,5 +1,13 @@
-import subprocess,os
+import subprocess,os,shutil
 print("Welcome to rodder!")
+if os.path.exists(os.getenv('HOME') + '/.config/rodder') == True or os.path.exists(os.getenv('HOME') + '~/.local/rodder') == True:
+    isDeleteOldInstall = input(">< Previous install found! Would you like to remove it? [y/N] ")
+    if isDeleteOldInstall.lower() == 'y':
+        shutil.rmtree(os.getenv('HOME') + '/.local/rodder')
+        shutil.rmtree(os.getenv('HOME') + '/.config/rodder')
+    else:
+        print(">< Cannot continue. Exiting :(...")
+        exit()
 isUserInstall = input(">< Would you like an install for this user only? [Y/n] ")
 print(">< Cloning rodder git repo...")
 print(subprocess.check_output('git clone https://github.com/ruthenic/rodder ~/.tmp/rodder', shell=True))
