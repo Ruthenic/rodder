@@ -1,5 +1,5 @@
 # rodder
-A distro-independent package manager with custom repos, similar to Homebrew
+A distro-independent (or distro-agonistic if you wanna be fancy), non-system package manager with custom repos, similar to Homebrew
 
 # FAQ
 
