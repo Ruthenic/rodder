@@ -1,4 +1,4 @@
-import subprocess
+import subprocess,os
 print("Welcome to rodder!")
 isUserInstall = input(">< Would you like an install for this user only? [Y/n] ")
 print(">< Cloning rodder git repo...")
@@ -9,11 +9,15 @@ if isUserInstall.lower() == "y" or isUserInstall.lower() == "":
     subprocess.call('mv ~/.tmp/rodder ~/.local', shell=True)
 elif isUserInstall.lower() == "n":
     path = '/usr/local/rodder'
-    print("Input your password to install to root.")
+    print("Input your password to install to root (WARNING: NOT FULLY FUNCTIONAL, NOR FULLY TESTED.).")
     subprocess.call('sudo mv ~/.tmp/rodder /usr/local', shell=True)
 else:
     print("Error: invalid selection! Exiting...")
     exit()
+print(">< Creating config file...")
+subprocess.call('mkdir ~/.config/rodder && mkdir ~/.config/rodder/repos', shell=True)
+subprocess.call('echo ""', shell=True)
 subprocess.call('rm -rf ~/.tmp/rodder', shell=True)
+subprocess.call('export PATH=' + os.getenv('HOME') + '/.local/rodder')
 print("Done installing rodder!")
-print("Be sure to add " + path + " to your path!")
+print("Be sure to add " + path + " to your path with " + '`export PATH=' + os.getenv('HOME') + '/.local/rodder`')
