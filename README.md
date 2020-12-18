@@ -1,7 +1,7 @@
 # rodder
 A distro-independent package manager with custom repos, similar to Homebrew
 
-#FAQ
+# FAQ
 
-##Why "rodder"?
+## Why "rodder"?
 Because a fishing rod grabs fish, similar to how a package manager grabs packages.
