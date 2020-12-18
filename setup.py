@@ -6,7 +6,7 @@ print(subprocess.check_output('git clone https://github.com/ruthenic/rodder ~/.t
 print(">< Moving to installation directory...")
 if isUserInstall.lower() == "y" or isUserInstall.lower() == "":
     path = '~/.local/rodder'
-    subprocess.call('mv ~/.tmp/rodder ~/.local', shell=True)
+    subprocess.call('mv ~/.tmp/rodder ~/.local/rodder', shell=True)
 elif isUserInstall.lower() == "n":
     path = '/usr/local/rodder'
     print("Input your password to install to root.")
