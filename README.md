@@ -1,7 +1,7 @@
 # rodder
-Yet Another Fish package manager
+A distro-independent package manager with custom repos, similar to Homebrew
 
-# What is rodder?
-Rodder is a package manager meant for users of the fish shell to install simple commands and functions.
+#FAQ
 
-# How to install it?
+##Why "rodder"?
+Because a fishing rod grabs fish, similar to how a package manager grabs packages.
