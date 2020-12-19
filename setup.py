@@ -5,6 +5,7 @@ if os.path.exists(os.getenv('HOME') + '/.config/rodder') == True or os.path.exis
     if isDeleteOldInstall.lower() == 'y':
         shutil.rmtree(os.getenv('HOME') + '/.local/rodder')
         shutil.rmtree(os.getenv('HOME') + '/.config/rodder')
+        shutil.rmtree(os.getenv('HOME') + '/.tmp/rodder')
     else:
         print(">< Cannot continue. Exiting :(...")
         exit()
