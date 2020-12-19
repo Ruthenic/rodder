@@ -25,7 +25,7 @@ elif sys.argv[1] == "update":
                 try:
                     shutil.rmtree(os.getenv('HOME') + '/.config/rodder/repos' + '/' + i)
                 except:
-                    tmp = 'i dont know how to make only trys with no excepts'
+                    pass
             shutil.move(os.getenv('HOME') + '/.tmp/rodder/' + line.rsplit('/', 1)[-1].replace('\n', '') + '/' + i, os.getenv('HOME') + '/.config/rodder/repos')
         subprocess.call('rm -rf ' + os.getenv('HOME') + '/.tmp/rodder/' + line.rsplit('/', 1)[-1].replace('\n', ''), shell=True)
         os.remove(os.getenv('HOME') + '/.config/rodder/repos/LICENSE')
