@@ -18,7 +18,8 @@ elif sys.argv[1] == "update":
                             if os.path.isdir(os.getenv('HOME') + '/.config/rodder/repos/' + line2.split(';')[0].replace('\n', '')) == True:
                                 shutil.rmtree(os.getenv('HOME') + '/.config/rodder/repos/' + line2.split(';')[0].replace('\n', ''))
         print(subprocess.check_output('git clone ' + line.replace('\n', '') + ' ' + os.getenv('HOME') + '/.tmp/rodder/' + line.rsplit('/', 1)[-1], shell=True))
-        shutil.move(os.getenv('HOME') + '/.tmp/rodder/' + line.rsplit('/', 1)[-1].replace('\n', '') + '/*', os.getenv('HOME') + '/.config/rodder/repos')
+        for i in os.listdir(os.getenv('HOME') + '/.tmp/rodder/' + line.rsplit('/', 1)[-1].replace('\n', '')):
+            shutil.move(os.getenv('HOME') + '/.tmp/rodder/' + line.rsplit('/', 1)[-1].replace('\n', '') + '/' + i, os.getenv('HOME') + '/.config/rodder/repos')
         subprocess.call('rm -rf ' + os.getenv('HOME') + '/.tmp/rodder/' + line.rsplit('/', 1)[-1].replace('\n', ''), shell=True)
         os.remove(os.getenv('HOME') + '/.config/rodder/repos/LICENSE')
 elif sys.argv[1] == "install":
