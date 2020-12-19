@@ -15,8 +15,7 @@ Welcome to rodder's documentation!
 rodder
 ========
 
-rodder will solve your problem of where to start with documentation,
-by providing a basic explanation of how to do it easily.
+rodder is a distro-independent, non-system package manager with custom repos, similar to Homebrew
 
 Features
 --------
@@ -31,7 +30,7 @@ Installation
 To install rodder, you have to:
 	- Clone the git repo with `git clone https://github.com/Ruthenic/rodder`
 	- Run the `setup.py` file, and answer all prompts
-	- You're done! Make sure to update the default repo with `rodder install` before using!
+	- You're done! Make sure to update the default repo with `rodder update` before using!
 .. 
   TODO: Allow setup to be ran with a bash oneliner with curl or wget or something
 
@@ -44,7 +43,7 @@ Contribute
 Support
 -------
 
-If you are having issues, please let us know on our Github issue tracker at github.com/Ruthenic/rodder/issues!
+If you are having issues, please let us know on our Github issue tracker at github.com/Ruthenic/rodder/issues! Alternatively, email me at mdrakea3@tutanota.com (you are less likely to get a timely response), or Discord at AD#5988
 
 License
 -------
