@@ -1,6 +1,6 @@
 import subprocess,os,shutil
 print("Welcome to rodder!")
-if os.path.exists(os.getenv('HOME') + '/.config/rodder') == True or os.path.exists(os.getenv('HOME') + '~/.local/rodder') == True:
+if os.path.exists(os.getenv('HOME') + '/.config/rodder') == True or os.path.exists(os.getenv('HOME') + '/.local/rodder') == True:
     isDeleteOldInstall = input(">< Previous install found! Would you like to remove it? [y/N] ")
     if isDeleteOldInstall.lower() == 'y':
         shutil.rmtree(os.getenv('HOME') + '/.local/rodder')
