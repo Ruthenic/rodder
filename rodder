@@ -59,5 +59,3 @@ elif sys.argv[1] == "remove":
                         isPackageInstalled = False
     if isPackageInstalled == False:
         print('>< Cannot find package ' + package + '... Exiting')
-for i in sys.argv:
-    print(i)
