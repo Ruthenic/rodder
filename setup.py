@@ -45,6 +45,8 @@ os.makedirs(os.getenv('HOME') + '/.config/rodder')
 os.makedirs(os.getenv('HOME') + '/.config/rodder/repos')
 with open(os.getenv('HOME') + '/.config/rodder/repos/master-repo-list.txt', 'w') as f:
     f.write('https://github.com/ruthenic/rodder-repo')
+if wantsReleaseVersion.lower() == "master":
+    f = open(os.getenv('HOME') + '/.config/rodder/.usingmaster', 'wb'); f.close() #there has to be a better way to create files
 #shutil.rmtree(os.getenv('HOME') + '/.tmp/rodder')
 subprocess.call('export PATH=' + os.getenv('HOME') + '/.local/rodder:$PATH', shell=True)
 print("Done installing rodder!")

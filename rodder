@@ -30,13 +30,13 @@ elif sys.argv[1] == "update":
         subprocess.call('rm -rf ' + os.getenv('HOME') + '/.tmp/rodder/' + line.rsplit('/', 1)[-1].replace('\n', ''), shell=True)
         os.remove(os.getenv('HOME') + '/.config/rodder/repos/LICENSE')
 elif sys.argv[1] == "install":
-    package = sys.argv[2]
+    package = sys.argv[2] #rodder install template; sys.argv[2] == template
     tmp = os.listdir(os.getenv('HOME') + '/.config/rodder/repos/')
     for i in tmp:
         if os.path.isdir(os.getenv('HOME') + '/.config/rodder/repos/' + i) == False and i != 'master-repo-list.txt':
             with open(os.getenv('HOME') + '/.config/rodder/repos/' + i) as f:
                 for line in f:
-                    if line.split(';')[0] == package:
+                    if line.split(';')[0] == package: #checks if "template" == line (in this case, template;install.py;uninstall.py) split by the semicolons, and the first thing in the array is what it is compared against
                         exec(open(os.getenv('HOME') + '/.config/rodder/repos/' + line.split(';')[1].replace('\n', '')).read())
                         isPackageInstalled = True
                         break
