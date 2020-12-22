@@ -8,7 +8,7 @@
 
 # Maintainer: Drake <mdrakea3@tutanota.com>
 pkgname=rodder-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r44.65a8262
+pkgver=r46.b30e692
 pkgrel=1
 pkgdesc="A user-based package manager in Python3"
 arch=('x86_64')
@@ -32,27 +32,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/rodder"
-
-# The examples below are not absolute and need to be adapted to each repo. The
-# primary goal is to generate version numbers that will increase according to
-# pacman's version comparisons with later commits to the repo. The format
-# VERSION='VER_NUM.rREV_NUM.HASH', or a relevant subset in case VER_NUM or HASH
-# are not available, is recommended.
-
-# Bazaar
-#	printf "r%s" "$(bzr revno)"
-
-# Git, tags available
-#	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-
-# Git, no tags available
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-
-# Mercurial
-#	printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
-
-# Subversion
-#	printf "r%s" "$(svnversion | tr -d 'A-z')"
 }
 
 prepare() {
