@@ -42,8 +42,11 @@ elif sys.argv[1] == "install":
                         break
                     else:
                         isPackageInstalled = False
-    if isPackageInstalled == False:
-        print('>< Cannot find package ' + package + '... Exiting')
+    try:
+        if isPackageInstalled == False:
+            print('>< Cannot find package ' + package + '... Exiting')
+    except:
+        print("Installation failed for unknown reason, try running `rodder install`!")
 elif sys.argv[1] == "remove":
     package = sys.argv[2]
     tmp = os.listdir(os.getenv('HOME') + '/.config/rodder/repos/')
@@ -57,5 +60,17 @@ elif sys.argv[1] == "remove":
                         break
                     else:
                         isPackageInstalled = False
-    if isPackageInstalled == False:
-        print('>< Cannot find package ' + package + '... Exiting')
+    try:
+        if isPackageInstalled == False:
+            print('>< Cannot find package ' + package + '... Exiting')
+    except:
+        print("Installation failed for unknown reason, try running `rodder install`!")
+elif sys.argv[1] == 'list':
+    tmp = os.listdir(os.getenv('HOME') + '/.config/rodder/repos/')
+    for i in tmp:
+        if os.path.isdir(os.getenv('HOME') + '/.config/rodder/repos/' + i) == False and i != 'master-repo-list.txt':
+            with open(os.getenv('HOME') + '/.config/rodder/repos/' + i) as f:
+                print("Packages in " + i.split('.')[0] + ":")
+                for line in f:
+                    print(line.split(';')[0])
+                    
