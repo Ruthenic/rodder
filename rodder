@@ -2,7 +2,9 @@
 import sys,subprocess,os,shutil
 if os.path.exists(os.getenv('HOME') + '/.config/rodder') == False:
     os.makedirs(os.getenv('HOME') + '/.config/rodder')
-if os.path.exists(os.getenv('HOME') + '/.config/rodder/master-repo-list.txt') == False:
+if os.path.exists(os.getenv('HOME') + '/.config/rodder/repos'):
+    os.makedirs(os.getenv('HOME') + '/.config/rodder/repos')
+if os.path.exists(os.getenv('HOME') + '/.config/rodder/repos/master-repo-list.txt') == False:
     with open(os.getenv('HOME') + '/.config/rodder/repos/master-repo-list.txt', 'w') as f:
         f.write('https://github.com/ruthenic/rodder-repo')
 if sys.argv[1] == "help" or sys.argv[1] == "":
