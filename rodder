@@ -2,7 +2,8 @@
 import sys,subprocess,os,shutil
 if sys.argv[1] == "check":
     print(">< Checking printing abilities...")
-    print(">< Test successful!")
+    print(">< Test successful! Exiting...")
+    exit()
 if os.path.exists(os.getenv('HOME') + '/.config/rodder') == False:
     os.makedirs(os.getenv('HOME') + '/.config/rodder')
 if os.path.exists(os.getenv('HOME') + '/.config/rodder/repos'):
