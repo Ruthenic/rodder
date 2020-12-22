@@ -5,7 +5,7 @@ if os.path.exists(os.getenv('HOME') + '/.config/rodder') == False:
 if os.path.exists(os.getenv('HOME') + '/.config/rodder/repos'):
     os.makedirs(os.getenv('HOME') + '/.config/rodder/repos')
 if os.path.exists(os.getenv('HOME') + '/.config/rodder/repos/master-repo-list.txt') == False:
-    with open(os.getenv('HOME') + '/.config/rodder/repos/master-repo-list.txt', 'w') as f:
+    with open(os.getenv('HOME') + '/.config/rodder/repos/master-repo-list.txt', 'wb') as f:
         f.write('https://github.com/ruthenic/rodder-repo')
 if sys.argv[1] == "help" or sys.argv[1] == "":
     print("rodder is a package management system\n")
