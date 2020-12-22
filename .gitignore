@@ -1,3 +1,9 @@
+#ignore some stuff that the docs build
 docs/_build
 doctrees/
 .buildinfo
+#ignore locally built packages
+pkg/
+rodder/
+src/
+pkgbuild/*.pkg.tar.zst
