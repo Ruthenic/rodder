@@ -8,17 +8,17 @@
 
 # Maintainer: Drake <mdrakea3@tutanota.com>
 pkgname=rodder-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=
+pkgver=master
 pkgrel=1
-pkgdesc="User-based package manager in Python3, similar to Homebrew"
+pkgdesc="A user-based package manager in Python3"
 arch=('any')
 url="https://github.com/Ruthenic/rodder"
 license=('Unlicense')
 groups=()
 depends=('python' 'git')
 makedepends=('') 
-provides=("${pkgname%-VCS}")
-conflicts=("${pkgname%-VCS}")
+provides=("$pkgname")
+conflicts=("$pkgname")
 replaces=()
 backup=()
 options=()
@@ -56,13 +56,8 @@ pkgver() {
 }
 
 prepare() {
-	cd "$srcdir"
-	git clone $source
-}
-
-build() {
 	cd "$srcdir/$pkgname"
-	mkdir 
+	git clone $source
 }
 
 check() {
