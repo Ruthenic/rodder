@@ -7,3 +7,4 @@ pkg/
 rodder/
 src/
 pkgbuild/*.pkg.tar.zst
+cache/
