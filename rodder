@@ -59,7 +59,7 @@ elif sys.argv[1] == "install":
         if isPackageInstalled == False:
             print('>< Cannot find package ' + package + '... Exiting')
     except:
-        print("Installation failed for unknown reason, try running `rodder install`!")
+        print(">< Installation failed for unknown reason, try running `rodder update`!")
 elif sys.argv[1] == "remove":
     package = sys.argv[2]
     tmp = os.listdir(os.getenv('HOME') + '/.config/rodder/repos/')
@@ -77,7 +77,7 @@ elif sys.argv[1] == "remove":
         if isPackageInstalled == False:
             print('>< Cannot find package ' + package + '... Exiting')
     except:
-        print("Installation failed for unknown reason, try running `rodder install`!")
+        print(">< Installation failed for unknown reason, try running `rodder update`!")
 elif sys.argv[1] == 'list':
     tmp = os.listdir(os.getenv('HOME') + '/.config/rodder/repos/')
     for i in tmp:
@@ -92,3 +92,33 @@ elif sys.argv[1] == 'repo': #here is where the code for managing repos starts
         with open(os.getenv('HOME') + '/.config/rodder/repos/master-repo-list.txt') as f:
             for line in f:
                 print(line.split('/')[len(line.split('/'))-1])
+    elif sys.argv[2] == 'add':
+        repo = sys.argv[3]
+        if not repo.startswith('https://'):
+            repo = 'https://github.com/' + repo
+        with open(os.getenv('HOME') + '/.config/rodder/repos/master-repo-list.txt') as f:
+            for line in f:
+                if line.replace('\n', '').lower() == repo.lower():
+                    print(">< Repo already in config file! Exiting...")
+                    exit()
+        with open(os.getenv('HOME') + '/.config/rodder/repos/master-repo-list.txt', 'a') as f:
+            f.write('\n' + repo)
+    elif sys.argv[2] == 'reset':
+        wantsReset = input("Are you sure you want to reset the config file to the default? [y/N] ")
+        if wantsReset.lower() == 'y':
+            with open(os.getenv('HOME') + '/.config/rodder/repos/master-repo-list.txt', 'w') as f:
+                    f.write('https://github.com/ruthenic/rodder-repo')
+        elif wantsReset.lower() == 'n' or wantsReset.lower() == '':
+            exit()
+    elif sys.argv[2] == 'remove':
+        repo = sys.argv[3]
+        if not repo.startswith('https://'):
+            repo = 'https://github.com/' + repo
+        lines = []
+        with open(os.getenv('HOME') + '/.config/rodder/repos/master-repo-list.txt') as f:
+            for line in f:
+                if not line.replace('\n', '').lower() == repo.lower():
+                    lines.append(line)
+        with open(os.getenv('HOME') + '/.config/rodder/repos/master-repo-list.txt', 'w') as f:
+            for l in lines:
+                f.write(l + '/n')
