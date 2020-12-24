@@ -87,3 +87,8 @@ elif sys.argv[1] == 'list':
                 for line in f:
                     print(line.split(';')[0])
                     
+elif sys.argv[1] == 'repo': #here is where the code for managing repos starts
+    if sys.argv[2] == 'list':
+        with open(os.getenv('HOME') + '/.config/rodder/repos/master-repo-list.txt') as f:
+            for line in f:
+                print(line.split('/')[len(line.split('/'))-1])
