@@ -122,3 +122,11 @@ elif sys.argv[1] == 'repo': #here is where the code for managing repos starts
         with open(os.getenv('HOME') + '/.config/rodder/repos/master-repo-list.txt', 'w') as f:
             for l in lines:
                 f.write(l + '/n')
+elif sys.argv[1] == 'search':
+    tmp = os.listdir(os.getenv('HOME') + '/.config/rodder/repos/')
+    for i in tmp:
+        if os.path.isdir(os.getenv('HOME') + '/.config/rodder/repos/' + i) == False and i != 'master-repo-list.txt':
+            with open(os.getenv('HOME') + '/.config/rodder/repos/' + i) as f:
+                for line in f:
+                    if sys.argv[2] in line:
+                        print('{} - {}'.format(line.split(';')[0], i.split('.')[0]))
