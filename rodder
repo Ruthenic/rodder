@@ -17,7 +17,7 @@ if sys.argv[1] == "help" or sys.argv[1] == "":
     print("rodder is a package management system\n")
     print("rodder install - installs program from current repos")
     print("rodder update - pulls newest version of repo file")
-    print("rodder remove - uninstall program")
+    print("rodder remove - uninstall program") #god this needs an update, but guess who can't be fucked
     exit()
 elif sys.argv[1] == "update":
     with open(os.getenv('HOME') + '/.config/rodder/repos/master-repo-list.txt') as f:

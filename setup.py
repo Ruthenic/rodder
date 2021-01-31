@@ -3,14 +3,21 @@ print("Welcome to rodder!")
 if os.path.exists(os.getenv('HOME') + '/.config/rodder') == True or os.path.exists(os.getenv('HOME') + '/.local/rodder') == True:
     isDeleteOldInstall = input(">< Previous install found! Would you like to remove it? [y/N] ")
     if isDeleteOldInstall.lower() == 'y':
-        shutil.rmtree(os.getenv('HOME') + '/.local/rodder')
-        shutil.rmtree(os.getenv('HOME') + '/.config/rodder')
+        try:
+            shutil.rmtree(os.getenv('HOME') + '/.local/rodder')
+        except:
+            pass
+        try:
+            shutil.rmtree(os.getenv('HOME') + '/.config/rodder')
+        except:
+            pass
         #shutil.rmtree(os.getenv('HOME') + '/.tmp/rodder')
     else:
         print(">< Cannot continue. Exiting :(...")
         exit()
 isUserInstall = input(">< Would you like an install for this user only? [Y/n] ")
-wantsReleaseVersion = input(">< Would you like the latest release, or the master branch? [RELEASE/master] ")
+#wantsReleaseVersion = input(">< Would you like the latest release, or the master branch? [RELEASE/master] ") #removing this for now because tbh its really dumb (still keeping the supporting code though)
+wantsReleaseVersion = 'master'
 #print(">< Cloning rodder git repo/downloading latest release...")
 if wantsReleaseVersion.lower() == "master":
     print(">< Cloning rodder git repo...")
