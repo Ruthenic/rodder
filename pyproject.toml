@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "rodder"
-version = "0.1.0"
+version = "0.1.1"
 description = "A distro-independant package manager for Linux"
 authors = ["Drake <mdrakea3@tutanota.com>"]
 license = "The Unlicense"
