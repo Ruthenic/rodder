@@ -11,7 +11,7 @@ if os.path.exists(os.getenv('HOME') + '/.config/rodder') == True or os.path.exis
             shutil.rmtree(os.getenv('HOME') + '/.config/rodder')
         except:
             pass
-        #shutil.rmtree(os.getenv('HOME') + '/.tmp/rodder')
+        shutil.rmtree(os.getenv('HOME') + '/.tmp/rodder')
     else:
         print(">< Cannot continue. Exiting :(...")
         exit()
@@ -47,6 +47,8 @@ elif isUserInstall.lower() == "n":
 else:
     print("Error: invalid selection! Exiting...")
     exit()
+print('>< Moving librodder to python lib directory...') #AAAAAAAAAAAHHHHHHHH GOD THIS IS SO BAD
+#shutil.move('{}/.local/rodder/','{}/.local/lib/Python3.9/site-packages')
 print(">< Creating config file...")
 os.makedirs(os.getenv('HOME') + '/.config/rodder')
 os.makedirs(os.getenv('HOME') + '/.config/rodder/repos')
