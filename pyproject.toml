@@ -4,6 +4,8 @@ version = "0.1.1"
 description = "A distro-independant package manager for Linux"
 authors = ["Drake <mdrakea3@tutanota.com>"]
 license = "The Unlicense"
+readme='README.md'
+repository="https://github.com/Ruthenic/rodder"
 
 [tool.poetry.dependencies]
 python = "^3.9"
