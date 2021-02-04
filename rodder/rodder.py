@@ -88,11 +88,12 @@ def list():
     tmp = os.listdir(os.getenv('HOME') + '/.config/rodder/repos/')
     ret_list = []
     for i in tmp:
-        if os.path.isdir(os.getenv('HOME') + '/.config/rodder/repos/' + i) == False and i != 'master-repo-list.txt':
+        if os.path.isdir(os.getenv('HOME') + '/.config/rodder/repos/' + i) == False and i != 'master-repo-list.txt' and i.endswith('.desc.txt'):
             with open(os.getenv('HOME') + '/.config/rodder/repos/' + i) as f:
                 print("Packages in " + i.split('.')[0] + ":") #TODO?: make dict, so we can return repos and packages? would make harder to parse though
                 for line in f:
                     ret_list.append(line.split(';')[0])
+                    print(line.split(';')[0]) #i mean, there is no reason for not printing as long as we still return something
     return ret_list
 class repo():
     def list():
@@ -180,8 +181,9 @@ if __name__ == "__main__":
     elif sys.argv[1] == "remove":
         remove(sys.argv[2])
     elif sys.argv[1] == 'list':
-        for i in list():
-            print(i)
+        list() #once again, we don't need the for list because we return, as well as print now
+        #for i in list():
+            #print(i)
     elif sys.argv[1] == 'repo': #here is where the code for managing repos starts
         if sys.argv[2] == 'list':
             for i in repo.list():
