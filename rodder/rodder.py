@@ -101,6 +101,7 @@ class repo():
         with open(os.getenv('HOME') + '/.config/rodder/repos/master-repo-list.txt') as f:
             for line in f:
                 ret_list.append(line.split('/')[len(line.split('/'))-1])
+        return ret_list
     def add(repo):
         #repo = sys.argv[3]
         if not repo.startswith('https://'):
