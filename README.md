@@ -8,13 +8,13 @@ Because a fishing rod grabs fish, similar to how a package manager grabs package
 
 # Notes
 
-##PyPI CLI Interface
+## PyPI CLI Interface
 
 If you want to run the command line app from the PyPI installer, please use the command
 ```python -m rodder.rodder [command]```
 I've no fucking idea how to fix this, so deal with it I guess.
 
-##PyPI Library
+## PyPI Library
 
 Similarly (although less bad), if you want to import the package and use it, I recommend using
 ```import rodder.rodder as rodder```
