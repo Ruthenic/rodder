@@ -112,7 +112,7 @@ class repo():
                     print(">< Repo already in config file! Exiting...")
                     exit()
         with open(os.getenv('HOME') + '/.config/rodder/repos/master-repo-list.txt', 'a') as f:
-            f.write('\n' + repo)
+            f.write('\n' + str(repo))
     def reset():
         wantsReset = input("Are you sure you want to reset the config file to the default? [y/N] ")
         if wantsReset.lower() == 'y':
@@ -191,8 +191,6 @@ if __name__ == "__main__":
                 print(i)
         elif sys.argv[2] == 'add':
             repo.add(sys.argv[3])
-            with open(os.getenv('HOME') + '/.config/rodder/repos/master-repo-list.txt', 'a') as f:
-                f.write('\n' + repo)
         elif sys.argv[2] == 'reset':
             repo.reset()
         elif sys.argv[2] == 'remove':
