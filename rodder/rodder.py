@@ -47,6 +47,8 @@ def update():
         print("ERROR: UPDATE FAILED")
         print(str(e))
 def install(package):
+    #ugh, i wish i knew of a way to do this by returning things, but that would require a huge overhaul
+    #also for installation and stuff it doesnt really matter
     #package = sys.argv[2] #rodder install template; sys.argv[2] == template
     tmp = os.listdir(os.getenv('HOME') + '/.config/rodder/repos/')
     for i in tmp:
@@ -84,18 +86,20 @@ def remove(package):
         print(">< Installation failed for unknown reason, try running `rodder update`!")
 def list():
     tmp = os.listdir(os.getenv('HOME') + '/.config/rodder/repos/')
+    ret_list = []
     for i in tmp:
         if os.path.isdir(os.getenv('HOME') + '/.config/rodder/repos/' + i) == False and i != 'master-repo-list.txt':
             with open(os.getenv('HOME') + '/.config/rodder/repos/' + i) as f:
-                print("Packages in " + i.split('.')[0] + ":")
+                print("Packages in " + i.split('.')[0] + ":") #TODO?: make dict, so we can return repos and packages? would make harder to parse though
                 for line in f:
-                    print(line.split(';')[0])
-                    
+                    ret_list.append(line.split(';')[0])
+    return ret_list
 class repo():
     def list():
+        ret_list = []
         with open(os.getenv('HOME') + '/.config/rodder/repos/master-repo-list.txt') as f:
             for line in f:
-                print(line.split('/')[len(line.split('/'))-1])
+                ret_list.append(line.split('/')[len(line.split('/'))-1])
     def add(repo):
         #repo = sys.argv[3]
         if not repo.startswith('https://'):
@@ -128,16 +132,18 @@ class repo():
                 f.write(l + '/n')
 def search(package):
     tmp = os.listdir(os.getenv('HOME') + '/.config/rodder/repos/')
-    tmp2 = open('{}/.tmp/rodder/search.txt'.format(os.getenv('HOME')), 'w+')
+    ret_package = ''
     for i in tmp:
         if os.path.isdir(os.getenv('HOME') + '/.config/rodder/repos/' + i) == False and i != 'master-repo-list.txt':
             with open(os.getenv('HOME') + '/.config/rodder/repos/' + i) as f:
                 for line in f:
                     if package in line:
                         print('{} - {}'.format(line.split(';')[0], i.split('.')[0]))
-                        tmp2.write(line.split(';')[0] + '\n')
+                        ret_package = line.split(';')[0]
+                        break #idk if this makes a difference
+    return ret_package
 
-
+#start cli tool (which is unable to be used correctly for some reason)
 if __name__ == "__main__":
     debug = False
     def interpreter(debug):
@@ -174,10 +180,12 @@ if __name__ == "__main__":
     elif sys.argv[1] == "remove":
         remove(sys.argv[2])
     elif sys.argv[1] == 'list':
-        list()
+        for i in list():
+            print(i)
     elif sys.argv[1] == 'repo': #here is where the code for managing repos starts
         if sys.argv[2] == 'list':
-            repo.list
+            for i in repo.list():
+                print(i)
         elif sys.argv[2] == 'add':
             repo.add(sys.argv[3])
             with open(os.getenv('HOME') + '/.config/rodder/repos/master-repo-list.txt', 'a') as f:
@@ -187,4 +195,4 @@ if __name__ == "__main__":
         elif sys.argv[2] == 'remove':
             repo.remove(sys.argv[3])
     elif sys.argv[1] == 'search':
-        search()
+        print(search())
