@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import sys,subprocess,os,shutil
+import sys,subprocess,os,shutil,pygit2
 def check():
     print(">< Checking printing abilities...")
     print(">< Test successful! Exiting...")
@@ -31,7 +31,14 @@ def update():
                                 for line2 in f2:
                                     if os.path.isdir(os.getenv('HOME') + '/.config/rodder/repos/' + line2.split(';')[0].replace('\n', '')) == True:
                                         shutil.rmtree(os.getenv('HOME') + '/.config/rodder/repos/' + line2.split(';')[0].replace('\n', ''))
-                print(subprocess.check_output('git clone ' + line.replace('\n', '') + ' ' + os.getenv('HOME') + '/.tmp/rodder/' + line.rsplit('/', 1)[-1], shell=True))
+                #print(subprocess.check_output('git clone ' + line.replace('\n', '') + ' ' + os.getenv('HOME') + '/.tmp/rodder/' + line.rsplit('/', 1)[-1], shell=True))
+                try:
+                    shutil.rmtree(os.getenv('HOME') + '/.tmp/rodder/' + line.rsplit('/', 1)[-1].replace('\n', ''))
+                except Exception as e:
+                    #print(os.getenv('HOME') + '/.tmp/rodder/' + line.rsplit('/', 1)[-1].replace('\n', ''))
+                    #print('error: couldn\'t delete old tmp dir')
+                    pass
+                pygit2.clone_repository(line.replace('\n', ''), os.getenv('HOME') + '/.tmp/rodder/' + line.rsplit('/', 1)[-1].replace('\n', ''))
             for i in os.listdir(os.getenv('HOME') + '/.tmp/rodder/' + line.rsplit('/', 1)[-1].replace('\n', '')):
                 try:
                     os.remove(os.getenv('HOME') + '/.config/rodder/repos/'  + i)
