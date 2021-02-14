@@ -1,2 +1,2 @@
 [codespell]
-skip = ./.git, ./docs
+skip = ./.git, ./docs, ./__pycache__, poetry.lock
