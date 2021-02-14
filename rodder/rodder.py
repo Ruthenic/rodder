@@ -55,7 +55,7 @@ def update():
         print(str(e))
 def install(package):
     #ugh, i wish i knew of a way to do this by returning things, but that would require a huge overhaul
-    #also for installation and stuff it doesnt really matter
+    #also for installation and stuff it doesn't really matter
     #package = sys.argv[2] #rodder install template; sys.argv[2] == template
     tmp = os.listdir(os.getenv('HOME') + '/.config/rodder/repos/')
     for i in tmp:
