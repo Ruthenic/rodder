@@ -112,7 +112,16 @@ def get_package_metadata(pkg):
             with open(os.getenv('HOME') + '/.config/rodder/repos/' + i) as f:
                 for line in f:
                     if line.split(';')[0] == pkg:
-                        metadata = open(os.getenv('HOME') + '/.config/rodder/repos/' + line.split(';')[3].replace('\n', ''))
+                        metadata = {}
+                        with open(os.getenv('HOME') + '/.config/rodder/repos/' + line.split(';')[3].replace('\n', '')) as f:
+                            for line in f:
+                                line = line.strip()
+                                try:
+                                    metadata[line.split(':')[0].strip()] = line.split(':')[1].strip()
+                                except:
+                                    pass #DAMN YOU TRAILING NEWLINES
+    return metadata
+
 class repo():
     def list():
         ret_list = []
@@ -196,9 +205,35 @@ if __name__ == "__main__":
     elif sys.argv[1] == "update":
         update()
     elif sys.argv[1] == "install":
-        install(sys.argv[2]) #rodder install template; sys.argv[2] == template
+        print(">< Installing {}...\n\n".format(sys.argv[2]))
+        while True:
+            metadata = get_package_metadata(sys.argv[2])
+            package = sys.argv[2]
+            confirm = input("Are you sure you want to install {}:{}? [y/n] ".format(sys.argv[2],metadata['version']))
+            confirm = confirm.strip()
+            if confirm.lower() == 'y':
+                install(package) #rodder install template; sys.argv[2] == template
+                break
+            elif confirm.lower() == 'n':
+                print(">< Exiting...")
+                exit()
+            else:
+                print(">< Invalid input!")
     elif sys.argv[1] == "remove":
-        remove(sys.argv[2])
+        print(">< Removing {}...\n\n".format(sys.argv[2]))
+        while True:
+            metadata = get_package_metadata(sys.argv[2])
+            package = sys.argv[2]
+            confirm = input("Are you sure you want to remove {}:{}? [y/n] ".format(sys.argv[2],metadata['version']))
+            confirm = confirm.strip()
+            if confirm.lower() == 'y':
+                remove(package) #rodder install template; sys.argv[2] == template
+                break
+            elif confirm.lower() == 'n':
+                print(">< Exiting...")
+                exit()
+            else:
+                print(">< Invalid input!")
     elif sys.argv[1] == 'list':
         list() #once again, we don't need the for list because we return, as well as print now
         #for i in list():
