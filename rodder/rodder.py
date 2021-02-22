@@ -105,6 +105,14 @@ def list():
                     ret_list.append(line.split(';')[0])
                     print(line.split(';')[0]) #i mean, there is no reason for not printing as long as we still return something
     return ret_list
+def get_package_metadata(pkg):
+    tmp = os.listdir(os.getenv('HOME') + '/.config/rodder/repos/')
+    for i in tmp:
+        if os.path.isdir(os.getenv('HOME') + '/.config/rodder/repos/' + i) == False and i != 'master-repo-list.txt':
+            with open(os.getenv('HOME') + '/.config/rodder/repos/' + i) as f:
+                for line in f:
+                    if line.split(';')[0] == pkg:
+                        metadata = open(os.getenv('HOME') + '/.config/rodder/repos/' + line.split(';')[3].replace('\n', ''))
 class repo():
     def list():
         ret_list = []
