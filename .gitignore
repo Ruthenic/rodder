@@ -7,3 +7,5 @@ src/
 pkgbuild/*.pkg.tar.zst
 cache/
 dist/
+#ignore pycache
+__pycache__/
