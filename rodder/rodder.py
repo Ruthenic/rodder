@@ -65,7 +65,8 @@ def install(package):
                     if line.split(';')[0] == package: #checks if "template" == line (in this case, template;install.py;uninstall.py) split by the semicolons, and the first thing in the array is what it is compared against
                         exec(open(os.getenv('HOME') + '/.config/rodder/repos/' + line.split(';')[1].replace('\n', '')).read())
                         isPackageInstalled = True
-                        exit() #uh, this shouldn't cause any problems? right? maybe?
+                        #exit() #uh, this shouldn't cause any problems? right? maybe?
+                        #Narrator: It did.
                         #this like, double breaks packages with the same name in multiple repos, but that would probably require a complete rework of this code anyway, so ¯\_(ツ)_/¯
                         break
                     else:
@@ -85,7 +86,7 @@ def remove(package):
                     if line.split(';')[0] == package:
                         exec(open(os.getenv('HOME') + '/.config/rodder/repos/' + line.split(';')[2].replace('\n', '')).read())
                         isPackageInstalled = True
-                        exit() #see install code for my comments on this exit()
+                        #exit() #see install code for my comments on this exit()
                         break
                     else:
                         isPackageInstalled = False
