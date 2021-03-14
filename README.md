@@ -1,3 +1,5 @@
+# If you want to use this, please use https://github.com/jorgebucaran/fisher instead. This is only kept for historical purposes.
+
 # rodder
 Yet Another Fish package manager
 
