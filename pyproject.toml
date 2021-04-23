@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "rodder"
-version = "0.1.8.1"
+version = "0.1.8.2"
 description = "A distro-independant package manager for Linux"
 authors = ["Drake <mdrakea3@tutanota.com>"]
 license = "Unlicense"
@@ -9,8 +9,6 @@ repository="https://github.com/Ruthenic/rodder"
 
 [tool.poetry.dependencies]
 python = "^3.8"
-pygit2 = "^1.5.0"
-
 
 [tool.poetry.dev-dependencies]
 
