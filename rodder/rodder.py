@@ -51,11 +51,8 @@ def install(package):
     #also for installation and stuff it doesn't really matter
     #package = sys.argv[2] #rodder install template; sys.argv[2] == template
     try:
-        print("ddsada")
         deps = get_package_metadata(package)["depends"].lstrip("depends:").split(";")
-        print(deps)
         for dep in deps:
-            print(dep)
             install(dep) #this definately allows for recursive package installs. Too bad!
     except Exception as e:
         print(str(e))
