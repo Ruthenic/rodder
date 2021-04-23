@@ -50,6 +50,16 @@ def install(package):
     #ugh, i wish i knew of a way to do this by returning things, but that would require a huge overhaul
     #also for installation and stuff it doesn't really matter
     #package = sys.argv[2] #rodder install template; sys.argv[2] == template
+    try:
+        print("ddsada")
+        deps = get_package_metadata(package)["depends"].lstrip("depends:").split(";")
+        print(deps)
+        for dep in deps:
+            print(dep)
+            install(dep) #this definately allows for recursive package installs. Too bad!
+    except Exception as e:
+        print(str(e))
+        #pass #who needs actual error handling, just wrap it in a try-except
     tmp = os.listdir(os.getenv('HOME') + '/.config/rodder/repos/')
     for i in tmp:
         if os.path.isdir(os.getenv('HOME') + '/.config/rodder/repos/' + i) == False and i != 'master-repo-list.txt':
